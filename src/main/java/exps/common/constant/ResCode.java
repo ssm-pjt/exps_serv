@@ -1,0 +1,79 @@
+package exps.common.constant;
+
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.ToString;
+
+import java.util.HashMap;
+import java.util.Map;
+
+@Getter
+@ToString
+@AllArgsConstructor
+public enum ResCode {
+
+    SUCCESS(100, "SUCCESS","SUCCESS"),
+
+    ERR_PARAMS(200, "ERR PARAMS","Error Params"),
+    RESULT_NULL(201, "RESULT NULL","Result Null"),
+    DATA_DUPLICATE(202, "DATA DUPLICATE", "Data Duplicate"),
+    DATA_NOT_FOUND(203, "DATA NOT FOUND", "Data not found"),
+    EXCEED_MAXIMUM_DATA(204, "EXCEED_MAXIMUM_DATA", "Exceed Maximum Data"),
+    DATA_REGISTRATION_FAIL(205, "DATA_REGISTRATION_FAIL", "Data Registration Failed"),
+    DATA_OVERWRITE(206, "DATA OVERWRITE", "Data Overwrite"),
+
+    ERROR(500, "ERROR", "ERROR"),
+    FAIL(900, "FAIL","FAIL"),
+
+    /* File Error Message */
+    FILE_REQUEST_MISSING_PART(3000, "FILE REQUEST MISSING PART ERROR", "File Request Missing Part Error"),
+    FILE_DUPLICATE(3001, "FILE DUPLACATE", "File Duplacate"),
+    FILE_MAX_UPLOAD_SIZE_EXCEEDED(3002, "FILE MAX UPLOAD SIZE EXCEEDED","File Max Upload Size Exceeded"),
+
+    FILE_REQUEST_ERROR(3010, "FILE REQUEST ERROR", "File Request Error"),
+    FILE_NOT_EXIST(3101, "FILE NOT EXIST", "File Not Exist"),
+    FILE_NOT_MAKE_PATH(3102, "FILE NOT MAKE PATH", "File Not Make Path"),
+    FILE_UPLOAD_FAILED(3900, "FILE UPLOAD FAILED", "File Upload Failed"),
+    FILE_TEMP_APPLY_FAILED(3901, "FILE TEMP APPLY FAILED", "File Temp Apply Failed"),
+    FILE_DOWNLOAD_FAILED(3902, "FILE DOWNLOAD FAILED", "File Download Failed"),
+    FILE_DELETE_FAILED(3903, "FILE DELETE FAILED", "File Delete Failed"),
+    FILE_ACCESS_DENIED(3904, "FILE ACCESS DENIED", "File Access Denied"),
+    FILE_PROCESS_FAILED(3905, "FILE PROCESS FAILED", "File Process Failed"),
+
+    EXCEL_ERROR(4000, "EXCEL ERROR", "Excel Error"),
+    // 엑셀 업로드 시 캐치 하지 못한 그외 에러
+    EXCEL_READER_ERROR(4001, "EXCEL READER ERROR", "Excel Reader Error"),
+    // 엑셀 업로드시 읽을 수 없는 엑셀 파일 에러
+    EXCEL_READER_FILE_ERROR(4010, "EXCEL READER FILE ERROR", "Excel Reader File Error"),
+    // 엑셀 업로드 Field 에러
+    EXCEL_READER_FIELD_ERROR(4011, "EXCEL READER FIELD ERROR", "Excel Reader Field Error"),
+    ;
+
+    private static Map<Integer, ResCode> codeToMap;
+
+    private final int code;
+    private final String label;
+    private final String message;
+
+    /**
+     * 코드 값으로 ResCode 맵으로 맵핑
+     * @param code
+     * @return
+     */
+    public static ResCode getResCode(int code) {
+        if(codeToMap == null) {
+            initMapping();
+        }
+        return codeToMap.get(code);
+    }
+
+    /**
+     * 맵 초기화
+     */
+    private static void initMapping() {
+        codeToMap = new HashMap<>();
+        for (ResCode resCode : values()) {
+            codeToMap.put(resCode.code, resCode);
+        }
+    }
+}

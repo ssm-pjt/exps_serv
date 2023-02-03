@@ -1,0 +1,11 @@
+spring:
+  ## 운영
+  datasource:
+    driver-class-name: org.mariadb.jdbc.Driver
+    url: jdbc:mariadb://138.2.116.122:3306/expense?serverTimezone=Asia/Seoul
+    username: root
+    password: ecbank1203$%
+logging:
+  config: classpath:logs/logback-prod.xml
+
+# AWS 정보 셋팅

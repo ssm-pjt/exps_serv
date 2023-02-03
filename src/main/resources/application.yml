@@ -1,0 +1,237 @@
+# application 관련 정보 셋팅
+service:
+  name: Expense Settle System
+  version: V0.0.1
+
+#server 포트 설정
+server:
+  port: 80
+## REQUEST HEADER IS TOO LARGE 에러 발생시 설정
+#  max-http-header-size: 30KB
+#  servlet:
+#    context-path: /exps
+
+## Springframework log Level
+logging.level.org.springframework: info
+
+spring:
+  profiles:
+    active: h2
+  servlet:
+    multipart:
+      ## 멀티파트 업로드 지원여부 (default: true)
+      enabled: true
+      ## 업로드된 파일의 임시 저장 공간
+      ## TEMP 파일 경로 지정시 절대경로 지정 default: ${java.io.tmpdir}
+      ## ${user.dir}/tmpfiles 는 현재 프로젝트에 tmpfiles
+      ## ${user.home}/${service.name}/tmpfiles 는 USER HOME 디렉토리에 rcs/tmpfiles
+      location: ${user.dir}/tmpfiles
+      ## 파일의 최대 사이즈 (default: 1MB) 파일당 최대 파일 크기이다
+      max-file-size: -1
+      ## 요청의 최대 사이즈 (default: 10MB)
+      ## 파일 한 개의 용량이 아니라 multipart/form-data 요청당 최대 파일 크기이다 (여러 파일 업로드 시 총 크기로 보면 된다)
+      max-request-size: -1
+      ## 파일이 메모리에 기록되는 임계값 (default: 0B)
+      ## 파일의 크기가 fize-size-threshold 값을 초과한다면 파일은 location 경로에 저장되어 해당 파일을 읽어서 작업
+      file-size-threshold: 1MB
+  jackson:
+    ## SnakeCase -> CamelCase 로 변환해서 받게 해줌
+    #    property-naming-strategy: SNAKE_CASE
+    serialization:
+      FAIL_ON_EMPTY_BEANS: false
+  
+## ThreadPool 생성 및 적용
+#  task:
+#    execution:
+#      pool:
+## 8개의 ThreadPool을 생성
+#        core-size: 8
+## 최대 8개의 ThreadPool 을 유지
+#        max-size: 8
+
+## 데이터베이스 옵션 설명
+#  datasource:
+#    driver-class-name: com.mysql.jdbc.Driver
+#    driver-class-name: net.sf.log4jdbc.sql.jdbcapi.DriverSpy
+#    dbcp2:
+#      initial-size: 10
+## idle 상태의 connection 최대 개수
+#      max-idle: 20
+## idle 상태의 connection 최소 개수
+#      min-idle: 5
+#      max-total: 100
+#      max-wait-millis: 720000
+#      pool-prepared-statements: true
+## test Query
+#      validation-query: SELECT 1
+## true로 주면, idle 상태에서도 test를 실행함
+#      test-while-idle: true
+## connection을 가져올 때, test 할것인지 여부
+#      test-on-borrow: true
+#      max-conn-lifetime-millis: 1800000
+## idle 상태가 얼마나 지속되면 test를 실행할 것인지. mil값임.
+#      time-between-eviction-runs-millis: 3600000
+## connection 유효기간
+#      min-evictable-idle-time-millis: 3600000
+
+## 추가적으로 줄수 있는 옵션들
+## serverTimezone=Asia/Seoul&useSSL=false&zeroDateTimeBehavior=convertToNull&allowMultiQueries=true
+## autoReconnect=true&noAccessToProcedureBodies=true&useUnicode=true&characterEncoding=utf8
+
+## 기본 데이터베이스 설정
+#  datasource:
+#    username: test
+#    password: test
+
+## MariaDB
+#    driver-class-name: org.mariadb.jdbc.Driver
+#    url: jdbc:mariadb://localhost:3306/test?useSSL=false&zeroDateTimeBehavior=convertToNull&allowMultiQueries=true
+## MySQL
+#    driver-class-name: com.mysql.cj.jdbc.Driver
+#    url: jdbc:mysql://localhost:3306/test?useSSL=false&zeroDateTimeBehavior=convertToNull&allowMultiQueries=true
+
+## hikari 옵션
+#    hikari:
+#      max-lifetime: 1797000
+#      connection-timeout: 10000
+## 10 ~ 40
+#      minimum-idle: 10
+## 10 ~ 40
+#      maximum-pool-size: 10
+## idle-timeout: 1497000
+#      isolate-internal-queries: false
+#      auto-commit: true
+#      read-only: false
+#      leak-detection-threshold: 10000
+
+## Jooq 설정
+#  jooq:
+#    sql-dialect: mariadb
+
+## 멀티 DB 설정 필요시 설정
+#  jta:
+#    enabled: true
+#  datasource:
+## 기본 메인 DB 설정
+## driver-class-name: com.mysql.cj.jdbc.Driver
+#    hikari:
+#      driver-class-name: org.mariadb.jdbc.Driver
+#      jdbc-url: jdbc:mariadb://localhost:3306/test?useSSL=false&zeroDateTimeBehavior=convertToNull&allowMultiQueries=true
+#      username: test
+#      password: test
+## 서브 DB 설정
+#    second:
+#      xa-data-source-class-name: com.mysql.cj.jdbc.MysqlXADataSource
+#      url: jdbc:mysql://localhost:3306/test?useSSL=false&zeroDateTimeBehavior=convertToNull&allowMultiQueries=true&serverTimezone=Asia/Seoul
+#      username: test
+#      password: test
+## MariaDB 설정 샘플
+#    mariadb:
+#      xa-data-source-class-name: org.mariadb.jdbc.MariaDbDataSource
+#      url: jdbc:mariadb://localhost:3306/test?useSSL=false&zeroDateTimeBehavior=convertToNull&allowMultiQueries=true
+#      username: test
+#      password: test
+
+
+#mvc 패턴 관련 setting jsp 는 WebConfig.java 참조
+  mvc:
+## Excel 설정
+    contentnegotiation:
+      ## favor-parameter 값이 true면 ContentNegotiationViewResolver가
+      ## format 파라미터로 지정한 미디어 타입을 사용하도록 설정
+      favor-parameter: true
+      ## favor-path-extension 값이 true면 ContentNegotiationViewResolver가
+      ## 확장자로 지정한 미디어 타입을 사용하도록 설정
+      favor-path-extension: true
+      media-types:
+        xls: application/vnd.ms-excel
+    converters:
+      preferred-json-mapper: jackson
+      
+#springdoc swagger
+springdoc:
+  api-docs:
+    path: /docs # 접속 path 설정
+
+  swagger-ui:
+    path: /swagger-ui # 접속 path 설정
+    display-request-duration: true  # try it out 을 했을 때 request duration 을 추가로 찍어줌
+  
+  cache:
+    disabled: true # swagger cache 설정
+
+## AWS 정보 셋팅
+cloud:
+  aws:
+    # AWS S3 bucket의 정보
+    s3:
+      bucket: test.co.kr
+      download-url: https://s3.ap-northeast-2.amazonaws.com/test.co.kr/
+    region:
+      static: ap-northeast-2
+    stack:
+      # EC2에서 Spring Cloud 프로젝트를 실행시키면 기본으로 CloudFormation 구성을 시작합니다.
+      # 설정한 CloudFormation이 없으면 false
+      auto: false
+    # AWS 마스터 계정 또는 IAMUSER 정보
+    credentials:
+      # AWS의 instanceProfile를 사용
+      instanceProfile: true
+      # AWS S3 KEY
+      accessKey: ABVSDASDA
+      secretKey: ASDADASDASD
+
+## 외부 서비스 URL
+external-service:
+  api1:
+  api2:
+
+## JWT 설정
+jwt:
+  secret-key: A
+  default-value: A
+
+## 기타 속성설정
+properties:
+  file:
+    ## 최대 업로드 사이즈 기본 100 MB
+    max-upload-size: 100
+    ## 업로드 경로 Docker 컨테이너 내부 경로
+    ## auto_apply.sh 파일의 [FILE_UPLOAD_PATH]에 설정된 HOST 파일업로드 경로와 Mapping
+
+    ## 경로 지정 설명
+    ## ${user.home} - USER HOME 경로에 files 디렉토리 ex) /home/user/files
+    ## files - Project 디렉토리 경로에 files 디렉토리 ex) backoffice-skeleton/files
+    ## /files - 절대경로인 ROOT 경로에 files 디렉토리 ex) /files
+
+    ## Docker로 구동시 Docker 컨테이너 내의 /files 경로를 파일 업로드 경로로 지정함
+    upload-dir: /files
+
+## Spring Actuator Client 설정
+#  boot:
+#    admin:
+#      client:
+#        url: http://localhost:8080
+#  security:
+#    user:
+#      name: admin
+#      password: secret
+
+## Actuator 활성화 옵션 조정
+#management:
+#  server:
+#    port: 9080
+#    address: freelife-MacBook-Pro.local
+#  endpoints:
+#    enabled-by-default: false
+#    web:
+#      exposure:
+## 모든 EndPoints 모두공개 설정
+#        include: "*"
+## 일부 EndPoints 비공개 설정
+#        exclude: env,beans
+#  endpoint:
+#    health:
+#      show-details: ALWAYS
+#    info:
+#      enabled: true

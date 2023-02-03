@@ -1,0 +1,25 @@
+EEEEEEEEEEEEEEEEEEEEEE                                                        SSSSSSSSSSSSSSS                              tttt               tttt          lllllll                     
+E::::::::::::::::::::E                                                      SS:::::::::::::::S                          ttt:::t            ttt:::t          l:::::l                     
+E::::::::::::::::::::E                                                     S:::::SSSSSS::::::S                          t:::::t            t:::::t          l:::::l                     
+EE::::::EEEEEEEEE::::E                                                     S:::::S     SSSSSSS                          t:::::t            t:::::t          l:::::l                     
+  E:::::E       EEEEEExxxxxxx      xxxxxxxppppp   ppppppppp                S:::::S                eeeeeeeeeeee    ttttttt:::::tttttttttttttt:::::ttttttt     l::::l     eeeeeeeeeeee    
+  E:::::E              x:::::x    x:::::x p::::ppp:::::::::p               S:::::S              ee::::::::::::ee  t:::::::::::::::::tt:::::::::::::::::t     l::::l   ee::::::::::::ee  
+  E::::::EEEEEEEEEE     x:::::x  x:::::x  p:::::::::::::::::p               S::::SSSS          e::::::eeeee:::::eet:::::::::::::::::tt:::::::::::::::::t     l::::l  e::::::eeeee:::::ee
+  E:::::::::::::::E      x:::::xx:::::x   pp::::::ppppp::::::p               SS::::::SSSSS    e::::::e     e:::::etttttt:::::::tttttttttttt:::::::tttttt     l::::l e::::::e     e:::::e
+  E:::::::::::::::E       x::::::::::x     p:::::p     p:::::p                 SSS::::::::SS  e:::::::eeeee::::::e      t:::::t            t:::::t           l::::l e:::::::eeeee::::::e
+  E::::::EEEEEEEEEE        x::::::::x      p:::::p     p:::::p                    SSSSSS::::S e:::::::::::::::::e       t:::::t            t:::::t           l::::l e:::::::::::::::::e 
+  E:::::E                  x::::::::x      p:::::p     p:::::p                         S:::::Se::::::eeeeeeeeeee        t:::::t            t:::::t           l::::l e::::::eeeeeeeeeee  
+  E:::::E       EEEEEE    x::::::::::x     p:::::p    p::::::p                         S:::::Se:::::::e                 t:::::t    tttttt  t:::::t    tttttt l::::l e:::::::e           
+EE::::::EEEEEEEE:::::E   x:::::xx:::::x    p:::::ppppp:::::::p             SSSSSSS     S:::::Se::::::::e                t::::::tttt:::::t  t::::::tttt:::::tl::::::le::::::::e          
+E::::::::::::::::::::E  x:::::x  x:::::x   p::::::::::::::::p  ......      S::::::SSSSSS:::::S e::::::::eeeeeeee        tt::::::::::::::t  tt::::::::::::::tl::::::l e::::::::eeeeeeee  
+E::::::::::::::::::::E x:::::x    x:::::x  p::::::::::::::pp   .::::.      S:::::::::::::::SS   ee:::::::::::::e          tt:::::::::::tt    tt:::::::::::ttl::::::l  ee:::::::::::::e  
+EEEEEEEEEEEEEEEEEEEEEExxxxxxx      xxxxxxx p::::::pppppppp     ......       SSSSSSSSSSSSSSS       eeeeeeeeeeeeee            ttttttttttt        ttttttttttt  llllllll    eeeeeeeeeeeeee  
+                                           p:::::p                                                                                                                                      
+                                           p:::::p                                                                                                                                      
+                                          p:::::::p                                                                                                                                     
+                                          p:::::::p                                                                                                                                     
+                                          p:::::::p                                                                                                                                     
+                                          ppppppppp                                                                                                                                     
+                                                                                                                                                                                        
+${service.name} ${service.version}
+Powered by Spring Boot ${spring-boot.version}

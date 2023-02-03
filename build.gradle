@@ -1,0 +1,94 @@
+plugins {
+	id 'java'
+	id 'org.springframework.boot' version '2.7.8'
+	id 'io.spring.dependency-management' version '1.0.15.RELEASE'
+}
+
+group = 'exps'
+version = '0.0.1-SNAPSHOT'
+sourceCompatibility = '11'
+
+configurations {
+	compileOnly {
+		extendsFrom annotationProcessor
+	}
+}
+
+repositories {
+	mavenCentral()
+}
+
+dependencies {
+	//Spring Boot
+	implementation 'org.springframework.boot:spring-boot-starter-web'
+	implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
+	
+	//@ConfigurationProperties 관련 디펜던시
+	implementation 'org.springframework.boot:spring-boot-configuration-processor'
+	//SpringBoot 2.3.0.RELEASE 부터 validation 라이브러리가 분리됨
+	implementation 'org.springframework.boot:spring-boot-starter-validation'
+	// https://mvnrepository.com/artifact/org.springframework.security/spring-security-jwt
+	implementation 'org.springframework.security:spring-security-jwt:1.1.1.RELEASE'
+	
+	
+	// JOOQ
+	implementation 'org.jooq:jooq-meta'
+	implementation 'org.jooq:jooq-codegen'
+	// 멀티 DB 설정 필요사항, 사용 시 주석 해제 ( XaDataManagerConfig.java )
+	implementation 'org.springframework.boot:spring-boot-starter-jta-atomikos'
+		
+	// sevlet - include ( MVC, jsp ) 
+	implementation 'javax.servlet:jstl'
+	implementation 'org.apache.tomcat.embed:tomcat-embed-jasper'
+	
+	implementation 'org.apache.httpcomponents:httpclient'
+	//JSON
+	implementation 'com.google.code.gson:gson:2.+'
+	implementation 'com.fasterxml.jackson.core:jackson-core:2.+'
+	implementation 'com.fasterxml.jackson.core:jackson-databind:2.1.+'
+	//XML
+	implementation 'com.fasterxml.jackson.dataformat:jackson-dataformat-xml'
+	implementation 'javax.xml.bind:jaxb-api'
+	//UUID
+	implementation 'com.fasterxml.uuid:java-uuid-generator:4.+'
+	//Lombok
+	implementation 'org.projectlombok:lombok:1.+'
+	
+	//Apache Common Liberary
+	implementation 'org.apache.commons:commons-lang3:3.12.0'
+	implementation 'org.apache.commons:commons-text:1.+'
+	implementation 'commons-fileupload:commons-fileupload:1.+'
+	implementation 'commons-io:commons-io'
+	implementation 'commons-codec:commons-codec'
+	
+	//swagger for util
+	compileOnly 'com.google.guava:guava:31.+'
+	implementation 'com.jayway.jsonpath:json-path'
+	implementation 'org.springdoc:springdoc-openapi-ui:1.6.7'
+	// Rest
+	implementation 'org.springframework.boot:spring-boot-starter-data-rest'
+	// Excel
+	implementation 'org.apache.poi:poi:5.+'
+	implementation 'org.apache.poi:poi-ooxml:5.+'
+	implementation 'org.jxls:jxls-jexcel:1.+'
+	
+	implementation 'eu.bitwalker:UserAgentUtils:1.+'
+	
+	//AWS S3 Mock
+    testImplementation 'io.findify:s3mock_2.13:0.2.6'
+	//원하는 타입으로 Parsing 해주는 라이브러리
+    implementation 'com.github.drapostolos:type-parser:0.8.1'
+	
+	compileOnly 'org.projectlombok:lombok:1.18.24'
+	developmentOnly 'org.springframework.boot:spring-boot-devtools'
+	// DB Connector
+	runtimeOnly 'org.mariadb.jdbc:mariadb-java-client'
+	runtimeOnly 'com.h2database:h2:1.3.148'
+	// Mysql 사용시 추가 runtimeOnly 'mysql:mysql-connector-java'
+	
+	testImplementation 'org.springframework.boot:spring-boot-starter-test'
+}
+
+tasks.named('test') {
+	useJUnitPlatform()
+}
