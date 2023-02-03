@@ -27,8 +27,8 @@
 
 ## Swagger UI
 관련 정보 참조
-- springfox: https://github.com/springfox/springfox
-- springfox-demos: https://github.com/springfox/springfox-demos
+- springdoc: https:https://springdoc.org
+- springfox 변환 : https://springdoc.org/#migrating-from-springfox
 
 - Swagger UI URL: `/swagger-ui/index.html`
     - ex) http://localhost:8080/swagger-ui/index.html
